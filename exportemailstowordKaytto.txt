@@ -1,0 +1,17 @@
+# Makron "ExportEmailsToWord" käyttö
+
+Tämä makro vie sähköpostiviestit Word-dokumenttiin. Tässä on yksityiskohtainen kuvaus makron toiminnasta:
+
+1. **Valitse kansio, josta sähköpostit viedään.** Makro pyytää sinua valitsemaan kansion, josta sähköpostit haluat viedä Word-dokumenttiin.
+
+2. **Anna tiedostonimi ja tallennussijainti.** Makro pyytää sinua antamaan tiedostonimen ja polun, johon haluat tallentaa Word-dokumentin.
+
+3. **Luo uusi Word-dokumentti.** Makro luo uuden Word-dokumentin, johon sähköpostit viedään.
+
+4. **Käy läpi jokainen sähköposti valitussa kansiossa.** Makro käy läpi jokaisen sähköpostin valitussa kansiossa. Jos viesti on sähköposti, makro kopioi sen sisällön Word-dokumenttiin.
+
+5. **Tallenna ja sulje Word-dokumentti.** Kun kaikki sähköpostit on viety, makro tallentaa ja sulkee Word-dokumentin.
+
+6. **Näytä viesti.** Lopuksi makro näyttää viestin, joka kertoo, että kaikki sähköpostit on viety Word-dokumenttiin.
+
+Huomaa: Tämä makro vie vain sähköpostien tekstin, ei liitteitä. Jos haluat viedä myös liitteet, sinun on muokattava makroa tai käytettävä erillistä makroa liitteiden viemiseen.

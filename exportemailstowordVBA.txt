@@ -1,0 +1,50 @@
+Sub ExportEmailsToWord()
+    Dim objWord As Object
+    Dim objDoc As Object
+    Dim objSelection As Object
+    Dim objEmail As Outlook.MailItem
+    Dim objFolder As Outlook.MAPIFolder
+    Dim strPath As String
+    Dim strFile As String
+    Dim i As Integer
+
+    ' Prompt the user to select the folder to export emails from
+    Set objFolder = Outlook.Application.Session.PickFolder
+
+    ' Prompt the user to enter a file name and save location
+    strPath = InputBox("Enter the path where you want to save the Word document:")
+    strFile = InputBox("Enter the file name for the Word document:")
+
+    ' Create a new Word document
+    Set objWord = CreateObject("Word.Application")
+    Set objDoc = objWord.Documents.Add
+
+    ' Loop over each email in the folder
+    For i = 1 To objFolder.Items.Count
+        If TypeName(objFolder.Items(i)) = "MailItem" Then
+            Set objEmail = objFolder.Items(i)
+
+            ' Copy the email body to the Word document
+            Set objSelection = objWord.Selection
+            objEmail.GetInspector.WordEditor.Range.Copy
+            objSelection.Paste
+            objSelection.TypeParagraph
+
+            ' Release objects from memory
+            Set objSelection = Nothing
+            Set objEmail = Nothing
+        End If
+    Next i
+
+    ' Save and close the Word document
+    objDoc.SaveAs2 strPath & "\" & strFile & ".docx"
+    objDoc.Close
+
+    ' Release objects from memory
+    Set objDoc = Nothing
+    Set objWord = Nothing
+    Set objFolder = Nothing
+
+    MsgBox "All emails have been exported to " & strPath & "\" & strFile & ".docx!"
+End Sub
+
